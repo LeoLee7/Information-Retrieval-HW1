@@ -8,7 +8,7 @@ This is a homework so there might be unexpected bugs.
 
 To run the "hw1.py" script, you need the following software installed on your system:
 
-* Python 3.5 or later
+* Python 3.6 or later
 * Elasticsearch 7.17.1
 * Java JDK 1.8.0
 
