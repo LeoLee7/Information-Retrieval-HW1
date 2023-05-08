@@ -132,29 +132,29 @@ def search_query(es, query, algorithm):
 if __name__ == "__main__":
 
 
-    # # Configure logging
-    # logging.basicConfig(
-    #     filename='searchLogs.log',
-    #     filemode='w+',
-    #     format='%(name)s - %(levelname)s - %(message)s',
-    #     level=logging.DEBUG
-    # )
+    # Configure logging
+    logging.basicConfig(
+        filename='searchLogs.log',
+        filemode='w+',
+        format='%(name)s - %(levelname)s - %(message)s',
+        level=logging.DEBUG
+    )
     
-    # # Connect to Elasticsearch
-    # es = connect_elasticsearch()
+    # Connect to Elasticsearch
+    es = connect_elasticsearch()
     
-    # # Index documents
-    # start_time = time.time()
-    # with open(dc.dfile_name) as f:
-    #     lines = f.readlines()
-    #     current_line, num_lines = 0, len(lines)
-    #     while current_line < num_lines:
-    #         document, current_line = extract_document(lines, current_line, num_lines)
-    #         store_record(es, dc.index_name, document)
+    # Index documents
+    start_time = time.time()
+    with open(dc.dfile_name) as f:
+        lines = f.readlines()
+        current_line, num_lines = 0, len(lines)
+        while current_line < num_lines:
+            document, current_line = extract_document(lines, current_line, num_lines)
+            store_record(es, dc.index_name, document)
 
     
-    # print('Total time:', time.time()-start_time)
-    # logging.info("execution time is %s", str(time.time()-start_time))
+    print('Total time:', time.time()-start_time)
+    logging.info("execution time is %s", str(time.time()-start_time))
     
     logging.basicConfig(filename='searchLogs.log', filemode='w+', format='%(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
     es = connect_elasticsearch()
@@ -168,10 +168,10 @@ if __name__ == "__main__":
             print('searching query with id', query["num"])
 
             search_query(es, query, 'relevance_feedback')
-            # search_query(es, query, 'tf_idf')
-            # search_query(es, query, 'bquery')
-            # search_query(es,query, 'wildcard')
-            # search_query(es,query, 'tf')
+            search_query(es, query, 'tf_idf')
+            search_query(es, query, 'bquery')
+            search_query(es,query, 'wildcard')
+            search_query(es,query, 'tf')
 
             curr+=1
     
